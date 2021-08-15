@@ -6,7 +6,8 @@ import {
   Tree,
   offsetFromRoot,
   generateFiles,
-  formatFiles
+  formatFiles,
+  updateJson
 } from '@nrwl/devkit';
 import { Schema } from './schema';
 import { applicationGenerator } from '@nrwl/node';
@@ -29,7 +30,14 @@ export async function microserviceGenerator(tree: Tree, schema: Schema) {
     root: appProjectRoot,
     offset: offsetFromRoot(appProjectRoot),
   });
-
+  updateJson(tree, joinPathFragments(appProjectRoot, 'tsconfig.app.json'), (pkgJson) => {
+    pkgJson.exclude = ["**/*.spec.ts", "setupTests.ts"];
+    return pkgJson
+  })
+  updateJson(tree, joinPathFragments(appProjectRoot, 'tsconfig.spec.json'), (pkgJson) => {
+    pkgJson.include = ["**/*.spec.ts", "**/*.d.ts", "setupTests.ts"]
+  return pkgJson
+  })
   if (!schema.skipFormat) {
     await formatFiles(tree);
   }
