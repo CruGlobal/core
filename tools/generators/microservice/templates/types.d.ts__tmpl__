@@ -1,0 +1,9 @@
+import { PrismaClient } from '.prisma/<%= name %>-client'
+
+declare global {
+  namespace GraphQLModules {
+    interface GlobalContext {
+      db: PrismaClient
+    }
+  }
+}
