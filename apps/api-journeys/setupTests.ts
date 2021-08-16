@@ -5,8 +5,8 @@ import * as path from 'path'
 dotenv.config({ path: path.resolve(__dirname, '.env') })
 
 const truncate = async (): Promise<void> => {
-  const tablenames: Array<{ tablename: string}> = await db.$queryRaw(
-    'SELECT tablename FROM pg_tables WHERE schemaname=\'public\''
+  const tablenames: Array<{ tablename: string }> = await db.$queryRaw(
+    "SELECT tablename FROM pg_tables WHERE schemaname='public'"
   )
 
   await tablenames.map(async ({ tablename }) => {
@@ -14,9 +14,7 @@ const truncate = async (): Promise<void> => {
       return await Promise.resolve()
     }
 
-    return await db.$queryRaw(
-      `TRUNCATE TABLE public."${tablename}" CASCADE;`
-    )
+    return await db.$queryRaw(`TRUNCATE TABLE public."${tablename}" CASCADE;`)
   })
 }
 

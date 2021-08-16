@@ -23,12 +23,22 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript", "standard-with-typescript"],
-      "rules": {}
+      "extends": [
+        "plugin:@nrwl/nx/typescript",
+        "standard-with-typescript",
+        "prettier-standard"
+      ],
+      "rules": {
+        "no-undef": "off"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nrwl/nx/javascript", "standard"],
+      "extends": [
+        "plugin:@nrwl/nx/javascript",
+        "standard",
+        "prettier-standard"
+      ],
       "rules": {}
     }
   ]

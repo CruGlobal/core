@@ -49,13 +49,13 @@
           }
         },
         "generate": {
-          "builder": "@nx-tools/nx-prisma:generate",
+          "executor": "@nx-tools/nx-prisma:generate",
           "options": {
             "schema": "apps/api-journeys/prisma/schema.prisma"
           }
         },
         "migrations": {
-          "builder": "@nx-tools/nx-prisma:migrations",
+          "executor": "@nx-tools/nx-prisma:migrations",
           "options": {
             "schema": "apps/api-journeys/prisma/schema.prisma"
           }
