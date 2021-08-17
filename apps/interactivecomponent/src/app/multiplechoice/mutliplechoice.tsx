@@ -1,5 +1,6 @@
 import './multiplechoice.css';
 import { Choices, ChoicesProps } from './button/button';
+import { Typography, Container } from '@material-ui/core';
 
 export type MultipleChoiceProps = {
   id?: string;
@@ -22,12 +23,12 @@ export const MultipleChoice = ({ title, properties }: MultipleChoiceProps) => {
   // TODO: Once a user clicks on an option block out the rest of the choices
 
   return (
-    <div>
-      <h3>{title}</h3>
-      <h4>Choices: </h4>
+    <Container maxWidth="sm">
+      <Typography variant="h1">{title}</Typography>
+      <Typography variant="h2">Choices: </Typography>
       {properties.choices.map((choice, i) => {
         return <Choices label={choice.label} key={i} />;
       })}
-    </div>
+    </Container>
   );
 };

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Button } from '@material-ui/core';
 
 export type ChoicesProps = {
   ref?: string;
@@ -16,13 +17,14 @@ export const Choices = ({ label, index }: ChoicesProps) => {
   };
 
   return (
-    <button
+    <Button
+      variant="contained"
       disabled={!!option}
       className="choices"
       key={index}
       onClick={() => handleButtonSelect(label)}
     >
       {label}
-    </button>
+    </Button>
   );
 };
