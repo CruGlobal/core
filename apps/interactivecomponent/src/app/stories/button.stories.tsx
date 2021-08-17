@@ -13,3 +13,9 @@ Default.args = {
   label: 'Terrific!',
   index: 0,
 };
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  label: 'Not so well...',
+  index: 0,
+};
