@@ -5,7 +5,11 @@ export function App() {
   return (
     <div>
       <main>
-        <MultipleChoice title={data.title} properties={data.properties} />
+        <MultipleChoice
+          title={data.title}
+          properties={data.properties}
+          language={data.language}
+        />
       </main>
     </div>
   );

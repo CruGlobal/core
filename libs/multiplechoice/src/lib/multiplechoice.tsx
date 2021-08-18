@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Typography,
   Container,
   makeStyles,
   Grid,
   Button,
+  createTheme,
+  ThemeProvider,
 } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
@@ -34,6 +36,10 @@ export type MultipleChoiceProps = {
   validations?: {
     required: boolean;
   };
+  language: {
+    ar?: string;
+    he?: string;
+  };
   properties: {
     randomize?: boolean;
     allow_multiple_selection?: boolean;
@@ -43,17 +49,28 @@ export type MultipleChoiceProps = {
   };
 };
 
-export const MultipleChoice = ({ title, properties }: MultipleChoiceProps) => {
+export const MultipleChoice = ({
+  title,
+  properties,
+  language,
+}: MultipleChoiceProps) => {
   const classes = useStyles();
   const [option, setOption] = useState<string | null>(null);
+  const [rtl, setRTL] = useState<string>('');
 
   const handleButtonSelect = (selected: string) => {
     setOption(selected);
     console.log('option: ', selected);
   };
 
+  useEffect(() => {
+    if (language.ar === 'Arabic') {
+      setRTL('rtl');
+    }
+  }, []);
+
   return (
-    <Container maxWidth="sm" className={classes.container}>
+    <Container maxWidth="sm" className={classes.container} dir={rtl}>
       <Typography variant="h3" className={classes.title}>
         {title}
       </Typography>

@@ -13,6 +13,9 @@ const Template: Story<MultipleChoiceProps> = (args) => (
 export const Primary = Template.bind({});
 Primary.args = {
   title: 'Terrific',
+  language: {
+    ar: 'Arabic',
+  },
   properties: {
     choices: [
       {

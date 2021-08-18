@@ -6,6 +6,10 @@ const data = {
     validations: {
         required: false,
     },
+    language: {
+        ar: 'Arabic',
+        he: 'Hebrew',
+    },
     properties: {
         randomize: false,
         allow_multiple_selection: false,
