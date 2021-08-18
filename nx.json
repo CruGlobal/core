@@ -32,12 +32,8 @@
     "api-journeys": {
       "tags": []
     },
-    "interactivecomponent": {
+    "multiplechoice": {
       "tags": []
-    },
-    "interactivecomponent-e2e": {
-      "tags": [],
-      "implicitDependencies": ["interactivecomponent"]
     }
   }
 }

@@ -1,10 +1,9 @@
-import styles from './app.module.css';
-import { MultipleChoice } from './multiplechoice';
-import data from '../data/data';
+import { MultipleChoice } from './lib/multiplechoice';
+import data from './data/data';
 
 export function App() {
   return (
-    <div className={styles.app}>
+    <div>
       <main>
         <MultipleChoice title={data.title} properties={data.properties} />
       </main>

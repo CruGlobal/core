@@ -1,18 +1,18 @@
 import { Story, Meta } from '@storybook/react';
-import { MultipleChoice, MultipleChoiceProps } from '../multiplechoice';
+import { MultipleChoice, MultipleChoiceProps } from './multiplechoice';
 
 export default {
   component: MultipleChoice,
-  title: 'Multiple Choice Component',
+  title: 'Multiplechoice',
 } as Meta;
 
 const Template: Story<MultipleChoiceProps> = (args) => (
   <MultipleChoice {...args} />
 );
 
-export const Default = Template.bind({});
-Default.args = {
-  title: 'How are you',
+export const Primary = Template.bind({});
+Primary.args = {
+  title: 'Terrific',
   properties: {
     choices: [
       {
