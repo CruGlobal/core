@@ -4,6 +4,10 @@ This library contains a single component called multiplechoice. To see the compo
 
 This component can then be used for any future projects
 
+## Use this component
+
+Import `MultipleChoice` to your project in NX to use this component
+
 ## Running story book
 
 Run `nx storybook mutliplechoice` to execute storybook via the localhost

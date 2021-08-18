@@ -5,8 +5,6 @@ import {
   makeStyles,
   Grid,
   Button,
-  createTheme,
-  ThemeProvider,
 } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
