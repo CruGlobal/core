@@ -5,9 +5,11 @@ import {
   makeStyles,
   Grid,
   Button,
+  ThemeProvider,
 } from '@material-ui/core';
+import { customTheme } from '../theme/theme';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: '#ededed',
     height: '70vh',
@@ -17,6 +19,9 @@ const useStyles = makeStyles(() => ({
   title: {
     backgroundColor: 'Black',
     color: 'White',
+  },
+  textColor: {
+    color: customTheme.palette.primary.main,
   },
 }));
 
@@ -68,27 +73,31 @@ export const MultipleChoice = ({
   }, []);
 
   return (
-    <Container maxWidth="sm" className={classes.container} dir={rtl}>
-      <Typography variant="h3" className={classes.title}>
-        {title}
-      </Typography>
-      <Typography variant="h4">Choices: </Typography>
-      <Grid container spacing={2} direction="column">
-        {properties.choices.map((choice, i) => {
-          return (
-            <Grid item key={i}>
-              <Button
-                variant="contained"
-                disabled={!!option}
-                className="choices"
-                onClick={() => handleButtonSelect(choice.label)}
-              >
-                {choice.label}
-              </Button>
-            </Grid>
-          );
-        })}
-      </Grid>
-    </Container>
+    <ThemeProvider theme={customTheme}>
+      <Container maxWidth="sm" className={classes.container} dir={rtl}>
+        <Typography variant="h3" className={classes.title}>
+          {title}
+        </Typography>
+        <Typography variant="h4" className={classes.textColor}>
+          Choices:{' '}
+        </Typography>
+        <Grid container spacing={2} direction="column">
+          {properties.choices.map((choice, i) => {
+            return (
+              <Grid item key={i}>
+                <Button
+                  variant="contained"
+                  disabled={!!option}
+                  className="choices"
+                  onClick={() => handleButtonSelect(choice.label)}
+                >
+                  {choice.label}
+                </Button>
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Container>
+    </ThemeProvider>
   );
 };
