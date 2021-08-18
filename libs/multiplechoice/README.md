@@ -10,7 +10,7 @@ Import `MultipleChoice` to your project in NX to use this component
 
 ## Running story book
 
-Run `nx storybook mutliplechoice` to execute storybook via the localhost
+Run `nx storybook multiplechoice` to execute storybook via the localhost
 
 ## Running unit tests
 
