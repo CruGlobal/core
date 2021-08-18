@@ -14,7 +14,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   title: 'Terrific',
   language: {
-    ar: 'Arabic',
+    ar: '',
   },
   properties: {
     choices: [
@@ -34,6 +34,9 @@ Primary.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   title: 'What did you eat for lunch?',
+  language: {
+    ar: 'Arabic',
+  },
   properties: {
     choices: [
       {
