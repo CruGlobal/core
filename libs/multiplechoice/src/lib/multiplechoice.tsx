@@ -1,11 +1,17 @@
-import { Choices, ChoicesProps } from './button/button';
-import { Typography, Container, makeStyles } from '@material-ui/core';
+import { useState } from 'react';
+import {
+  Typography,
+  Container,
+  makeStyles,
+  Grid,
+  Button,
+} from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   container: {
     backgroundColor: '#ededed',
-    height: '40vh',
-    width: '50vh',
+    height: '70vh',
+    width: '80vh',
     textAlign: 'center',
   },
   title: {
@@ -13,6 +19,12 @@ const useStyles = makeStyles(() => ({
     color: 'White',
   },
 }));
+
+type Choices = {
+  ref?: string;
+  id?: string;
+  label: string;
+};
 
 export type MultipleChoiceProps = {
   id?: string;
@@ -27,13 +39,18 @@ export type MultipleChoiceProps = {
     allow_multiple_selection?: boolean;
     allow_other_choice?: boolean;
     vertical_alignment?: boolean;
-    choices: ChoicesProps[];
+    choices: Choices[];
   };
 };
 
 export const MultipleChoice = ({ title, properties }: MultipleChoiceProps) => {
   const classes = useStyles();
-  // TODO: Once a user clicks on an option block out the rest of the choices
+  const [option, setOption] = useState<string | null>(null);
+
+  const handleButtonSelect = (selected: string) => {
+    setOption(selected);
+    console.log('option: ', selected);
+  };
 
   return (
     <Container maxWidth="sm" className={classes.container}>
@@ -41,9 +58,22 @@ export const MultipleChoice = ({ title, properties }: MultipleChoiceProps) => {
         {title}
       </Typography>
       <Typography variant="h4">Choices: </Typography>
-      {properties.choices.map((choice, i) => {
-        return <Choices label={choice.label} key={i} />;
-      })}
+      <Grid container spacing={2} direction="column">
+        {properties.choices.map((choice, i) => {
+          return (
+            <Grid item key={i}>
+              <Button
+                variant="contained"
+                disabled={!!option}
+                className="choices"
+                onClick={() => handleButtonSelect(choice.label)}
+              >
+                {choice.label}
+              </Button>
+            </Grid>
+          );
+        })}
+      </Grid>
     </Container>
   );
 };
