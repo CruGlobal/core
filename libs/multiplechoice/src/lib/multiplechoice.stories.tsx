@@ -12,20 +12,23 @@ const Template: Story<MultipleChoiceProps> = (args) => (
 
 export const Primary = Template.bind({});
 Primary.args = {
-  title: 'Terrific',
+  title: 'How can we help you know more about jesus?',
   language: {
     ar: '',
   },
   properties: {
     choices: [
       {
-        label: 'Terrific!',
+        label: 'Chat privately',
       },
       {
-        label: 'Not so well...',
+        label: 'Get a bible',
       },
       {
-        label: "I'm a bit sad",
+        label: 'Watch more videos about jesus',
+      },
+      {
+        label: 'Ask a question',
       },
     ],
   },

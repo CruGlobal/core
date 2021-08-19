@@ -30,6 +30,11 @@ const data = {
                 ref: "NSS7D123KDFG9SAXN08ASD986",
                 id: "97ch4759h97gk3",
                 label: "I'm a bit sad"
+            },
+            {
+                ref: "NSS7D123KSADF9827AXSD986",
+                id: "97ch4759ASDF987",
+                label: "I'm feeling great"
             }
         ]
     }

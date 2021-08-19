@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import {
   Typography,
-  Container,
+  Box,
+  Card,
+  CardContent,
   makeStyles,
   Grid,
   Button,
@@ -11,17 +13,15 @@ import { customTheme } from '../theme/theme';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    backgroundColor: '#ededed',
-    height: '70vh',
-    width: '80vh',
-    textAlign: 'center',
+    maxWidth: 350,
   },
   title: {
-    backgroundColor: 'Black',
+    backgroundColor: '#8D8D8D',
     color: 'White',
+    minHeight: 50,
   },
-  textColor: {
-    color: customTheme.palette.primary.main,
+  choices: {
+    justifyContent: 'flex-start',
   },
 }));
 
@@ -52,52 +52,41 @@ export type MultipleChoiceProps = {
   };
 };
 
-export const MultipleChoice = ({
-  title,
-  properties,
-  language,
-}: MultipleChoiceProps) => {
+export const MultipleChoice = ({ title, properties }: MultipleChoiceProps) => {
   const classes = useStyles();
   const [option, setOption] = useState<string | null>(null);
-  const [rtl, setRTL] = useState<string>('');
 
   const handleButtonSelect = (selected: string) => {
     setOption(selected);
     console.log('option: ', selected);
   };
 
-  useEffect(() => {
-    if (language.ar === 'Arabic') {
-      setRTL('rtl');
-    }
-  }, []);
-
   return (
     <ThemeProvider theme={customTheme}>
-      <Container maxWidth="sm" className={classes.container} dir={rtl}>
-        <Typography variant="h3" className={classes.title}>
+      <Card className={classes.container}>
+        <Typography variant="h6" className={classes.title} align="center">
           {title}
         </Typography>
-        <Typography variant="h4" className={classes.textColor}>
-          Choices:{' '}
-        </Typography>
-        <Grid container spacing={2} direction="column">
-          {properties.choices.map((choice, i) => {
-            return (
-              <Grid item key={i}>
-                <Button
-                  variant="contained"
-                  disabled={!!option}
-                  className="choices"
-                  onClick={() => handleButtonSelect(choice.label)}
-                >
-                  {choice.label}
-                </Button>
-              </Grid>
-            );
-          })}
-        </Grid>
-      </Container>
+        <CardContent>
+          <Grid container spacing={2} direction="column">
+            {properties.choices.map((choice, i) => {
+              return (
+                <Grid item key={i}>
+                  <Button
+                    variant="outlined"
+                    disabled={!!option}
+                    fullWidth={true}
+                    className={classes.choices}
+                    onClick={() => handleButtonSelect(choice.label)}
+                  >
+                    {choice.label}
+                  </Button>
+                </Grid>
+              );
+            })}
+          </Grid>
+        </CardContent>
+      </Card>
     </ThemeProvider>
   );
 };
